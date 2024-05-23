@@ -20,8 +20,8 @@ total_height = 0
 # Iterate over each height in the student_heights list
 for height in student_heights:
     total_height += height  # Add each height to the total_height
-    avg_height = total_height/len(student_heights)
+    avg_height = total_height/len(student_heights) #calculating the average height 
 
-# Print the total_height
+# Printing the heights and the average height.
 print(f"The heights that you have entered are {student_heights}\nThe average height is {avg_height}")
 
