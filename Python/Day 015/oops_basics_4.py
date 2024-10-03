@@ -2,7 +2,7 @@
 In this program we explore some basic code of Object Oriented Programming Paradigm
 and with the help of examples understand how it works
 
-Taking the example from oops_basic.py to oops_basic_3.py, we will using animal example to explain he concept of polymorphism
+Taking the example from oops_basic.py to oops_basic_3.py, we will using animal example to explain the concept of polymorphism
 
 (
     Polymorphism allows objects of different classes to be treated as objects of a common superclass. 
