@@ -1,0 +1,130 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Manage Hotels</title>
+
+    <style>
+        .input-group label
+        {
+            margin-left: -20px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Admin Content: Manage Hotels -->
+    <div class="admin-content">
+        <h1>Manage Hotels</h1>
+
+        <section class="booking-section">
+            <div class="booking-section-container">
+                <form action="{{ url_for('manage_hotels') }}" method="post">
+                    <div class="input-group">
+                        <label for="hotel_id" style="margin-left:-22%; margin-top: 0px;">Hotel ID <br>(leave empty for new hotel)</label>
+                        <input type="number" id="hotel_id" name="hotel_id" placeholder="Hotel ID" value="{{ request.form.get('hotel_id') }}">
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel_city">Hotel City</label>
+                        <input type="text" id="hotel_city" name="hotel_city" placeholder="City" value="{{ request.form.get('hotel_city') }}">
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel_rooms">Total Rooms</label>
+                        <input type="number" id="hotel_rooms" name="hotel_rooms" placeholder="Total Rooms" value="{{ request.form.get('hotel_rooms') }}">
+                    </div>
+                    <div class="input-group">
+                        <label for="peak_price">Peak Season <br> Price</label>
+                        <input type="number" id="peak_price" name="peak_price" placeholder="Peak Season Price" step="0.01" value="{{ request.form.get('peak_price') }}">
+                    </div>
+                    <div class="input-group">
+                        <label for="off_peak_price" style="margin-left: -9%;" >Off-Peak Season <br> Price</label>
+                        <input type="number" id="off_peak_price" name="off_peak_price" placeholder="Off-Peak Season Price" step="0.01" value="{{ request.form.get('off_peak_price') }}">
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+        
+            </div>
+        </section>
+
+        <!-- Form to manage hotels -->
+        <br>
+        <!-- Display existing hotels in a table -->
+        <h2>Existing Hotels</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hotel ID</th>
+                    <th>City</th>
+                    <th>Total Rooms</th>
+                    <th>Off-Peak Price</th>
+                    <th>Peak Price</th>
+                    <th>Standard Rooms Available</th>
+                    <th>Double Rooms Available</th>
+                    <th>Family Rooms Available</th>
+                    <th>Available Rooms</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hotel in hotels %}
+                <tr>
+                    <td>{{ hotel[0] }}</td>
+                    <td>{{ hotel[1] }}</td>
+                    <td>{{ hotel[2] }}</td>
+                    <td>{{ hotel[3] }}</td>
+                    <td>{{ hotel[4] }}</td>
+                    <td>{{ hotel[5] }}</td>
+                    <td>{{ hotel[6] }}</td>
+                    <td>{{ hotel[7] }}</td>
+                    <td>{{ hotel[8] }}</td>
+                    <td>
+                        <form action="{{ url_for('manage_hotels') }}" method="post">
+                            <input type="hidden" name="hotel_id" value="{{ hotel[0] }}">
+                            <button type="submit" name="action" value="delete" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

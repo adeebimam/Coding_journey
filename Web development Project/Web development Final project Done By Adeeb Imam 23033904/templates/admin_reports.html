@@ -1,0 +1,167 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Admin Reports</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <style>
+        h1, h2 {
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        /* Style the download PDF button */
+        #download-pdf {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #download-pdf:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Admin Reports -->
+    <div class="admin-reports" id="reports-content">
+        <h1>Admin Reports</h1>
+
+        <!-- Monthly Sales Report -->
+        <h2>Monthly Sales</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for month, total_sales in monthly_sales %}
+                <tr>
+                    <td>{{ month }}</td>
+                    <td>{{ total_sales }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Sales for Each Hotel -->
+        <h2>Sales for Each Hotel</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Hotel City</th>
+                    <th>Total Sales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for hotel_city, total_sales in sales_per_hotel %}
+                <tr>
+                    <td>{{ hotel_city }}</td>
+                    <td>{{ total_sales }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Top Customers -->
+        <h2>Top Customers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Total Spending</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for guest_id, first_name, last_name, total_spending in top_customers %}
+                <tr>
+                    <td>{{ guest_id }}</td>
+                    <td>{{ first_name }}</td>
+                    <td>{{ last_name }}</td>
+                    <td>{{ total_spending }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Button to trigger PDF generation -->
+    <button id="download-pdf">Download PDF</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for generating PDF -->
+    <script>
+        document.getElementById('download-pdf').addEventListener('click', function() {
+            // Specify the content to be converted to PDF (in this case, the entire body)
+            var content = document.body;
+
+            // Set html2pdf options
+            var options = {
+                margin: 1, // Adjust the margins as needed
+                filename: 'admin_reports.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all'] },
+                style: '@page { size: auto; margin: 1in; }' // Ensure the PDF uses your page styles
+            };
+
+            // Generate the PDF and save it
+            html2pdf().from(content).set(options).save();
+        });
+    </script>
+</body>
+
+</html>

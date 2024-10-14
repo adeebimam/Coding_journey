@@ -1,0 +1,78 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=deviceidth, initial-scale=1.0">
+    <title>Manage Room Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels
+        </div>
+        <div class="navbar-links">
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="admin-content">
+        <h1>Manage Room Status</h1>
+        
+        <form action="{{ url_for('admin_manage_room_status') }}" method="post">
+            <div class="form-group">
+                <label for="hotel_id">Hotel ID:</label>
+                <input type="number" id="hotel_id" name="hotel_id" placeholder="Hotel ID" value="{{ request.form.get('hotel_id') }}">
+            </div>
+            <div class="form-group">
+                <label for="room_type">Room Type:</label>
+                <select id="room_type" name="room_type">
+                    <option value="standard">Standard</option>
+                    <option value="double">Double</option>
+                    <option value="family">Family</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Room Status:</label>
+                <select id="status" name="status">
+                    <option value="available">Available</option>
+                    <option value="booked">Booked</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">Update Status</button>
+        </form>
+
+        <h2>Hotel Room Status</h2>
+        <table>
+            <tr>
+                <th>Hotel ID</th>
+                <th>City</th>
+                <th>Standard Rooms Available</th>
+                <th>Double Rooms Available</th>
+                <th>Family Rooms Available</th>
+            </tr>
+            {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel[0] }}</td>
+                <td>{{ hotel[1] }}</td>
+                <td>{{ hotel[5] }}</td>
+                <td>{{ hotel[6] }}</td>
+                <td>{{ hotel[7] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>

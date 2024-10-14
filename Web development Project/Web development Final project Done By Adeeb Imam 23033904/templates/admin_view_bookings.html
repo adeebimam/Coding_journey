@@ -1,0 +1,93 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Manage Bookings</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    <ul class="flash-messages-login">
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- View All Bookings -->
+    <div class="admin-content">
+        <h1>All Bookings</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Guest First Name</th>
+                    <th>Guest Last Name</th>
+                    <th>Hotel City</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                    <th>Room Type</th>
+                    <th>Number of Guests</th>
+                    <th>Total Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking[0] }}</td>
+                    <td>{{ booking[1] }}</td>
+                    <td>{{ booking[2] }}</td>
+                    <td>{{ booking[3] }}</td>
+                    <td>{{ booking[4] }}</td>
+                    <td>{{ booking[5] }}</td>
+                    <td>{{ booking[6] }}</td>
+                    <td>{{ booking[7] }}</td>
+                    <td>{{ booking[8] }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_booking', booking_id=booking[0]) }}">Edit</a>
+                        <!-- Add a form for deleting the booking -->
+                        <form action="{{ url_for('view_all_bookings') }}" method="POST" style="display: inline;">
+                            <input type="hidden" name="booking_id" value="{{ booking[0] }}">
+                            <button type="submit" name="action" value="delete" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

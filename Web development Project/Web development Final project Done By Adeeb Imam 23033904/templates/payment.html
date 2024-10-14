@@ -1,0 +1,70 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Secure Payment</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">WorldHotels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Payment Form -->
+    <section class="payment-section">
+        <div class="payment-heading">
+            <h1>Secure Payment</h1>
+            <p>Please enter your payment details to complete the booking:</p>
+            <br>
+            <p><strong>Total Price:</strong> £{{ total_price }}</p>
+            <br>
+            <p><strong>Booking ID:</strong> {{ booking_id }}</p>
+            <br>
+        </div>
+        <form action="{{ url_for('complete_payment') }}" method="post">
+            <!-- Payment form fields -->
+            <div class="input-payment">
+                <label for="card_number">Card Number:</label>
+                <input type="text" name="card_number" required>
+            </div>
+            <div class="input-payment">
+                <label for="card_expiry">Expiry Date (MM/YY):</label>
+                <input type="text" name="card_expiry" required>
+            </div>
+            <div class="input-payment">
+                <label for="card_cvv">CVV:</label>
+                <input type="text" name="card_cvv" required>
+            </div>
+            <br>
+            <button type="submit">Complete Payment</button>
+        </form>
+                <br>
+        <!-- Payment Options -->
+        <div class="payment-options">
+            <p>We accept:</p>
+            <img src="{{ url_for('static', filename='images/payment_methods_accepted_3.jpg') }}" alt="Payment Methods">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

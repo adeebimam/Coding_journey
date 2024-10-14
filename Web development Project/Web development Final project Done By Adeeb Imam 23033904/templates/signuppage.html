@@ -1,0 +1,120 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|signup</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li class="active"><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <section class="signup-section">
+        <div class="signup-details-container">
+            <!-- Form to capture customer details -->
+            <form action="{{ url_for('signup') }}" method="post">
+                <h1>Personal Details</h1>
+                
+                <p>Please enter the details below to set up a new account</p>
+                <div class="signup-details">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="signup-details">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                
+                <br>
+    
+                <h1>New Account Information</h1>
+                <p>Please enter the details below to set up a new account</p>
+                <div class="signup-details">
+                    <label for="userName">Username</label>
+                    <input type="email" id="userName" name="userName" required>
+                    <p style="text-align:right; margin-right: 25%; font-size: 12px; color:#DA291C;">Your email should be your username</p>
+                </div>
+                <div class="signup-details">
+                    <label for="newPassword">Password</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="signup-details">
+                    <label for="reenterPassword">Re-enter <br>Password</label>
+                    <input type="password" id="reenterPassword" name="reenterPassword" required>
+                </div>
+                
+                <div class="show-password">
+                    <label for="toggle-password" style="margin-left: 20px;">Show Password</label>
+                    <input type="checkbox" id="toggle-password" >
+                </div>
+
+            <input type="submit" value="Sign Up" class="login-button">
+            </form>
+        <!-- End of form -->
+        </div>
+    </section>
+<!-- End of container for the form with adjusted positioning and modern styling -->
+
+
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to toggle password visibility
+            function togglePasswordVisibility() 
+            {
+                        // Get password inputs
+                        var newPasswordInput = document.getElementById("newPassword");
+                        var reenterPasswordInput = document.getElementById("reenterPassword");
+    
+                // Get the state of the checkbox
+                    var checkbox = document.getElementById("toggle-password");
+    
+                // Toggle visibility of both password fields
+                    if (checkbox.checked) 
+                    {
+                        newPasswordInput.type = "text";
+                        reenterPasswordInput.type = "text";
+                    }   
+                    else 
+                    {
+                        newPasswordInput.type = "password";
+                        reenterPasswordInput.type = "password";
+                    }
+            }
+
+    // Add event listener to the checkbox for the change event
+    document.getElementById("toggle-password").addEventListener("change", togglePasswordVisibility);
+    </script>
+    
+
+</body>
+</html>

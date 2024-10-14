@@ -1,0 +1,63 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|booking</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="booking-overview-section">
+        <h2>Booking Overview</h2>
+        
+        
+        <p><strong>Hotel:</strong> {{ location }}</p>
+        <p><strong>Check-in Date:</strong> {{ checkin_date }}</p>
+        <p><strong>Check-out Date:</strong> {{ checkout_date }}</p>
+        <p><strong>Number of Guests:</strong> {{ guests }}</p>
+        <p><strong>Stay Duration:</strong> {{ stay_duration }} days</p>
+        <p><strong>Total Price:</strong> £{{ total_price }}</p>
+        <p><strong>Room Type:</strong> {{ room_type }}</p>
+
+        <!-- Form for confirmation and cancellation -->
+        <form action="{{ url_for('confirm_booking') }}" method="post">
+            <input type="hidden" name="hotel_city" value="{{ hotel_city }}">
+            <input type="hidden" name="hotel_id" value="{{ hotel_id }}">
+            <input type="hidden" name="guests" value="{{ guests }}">
+            <input type="hidden" name="room_type" value="{{ room_type }}">
+            <input type="hidden" name="checkin_date" value="{{ checkin_date }}">
+            <input type="hidden" name="checkout_date" value="{{ checkout_date }}">
+            <input type="hidden" name="stay_duration" value="{{ stay_duration }}">
+            <input type="hidden" name="total_price" value="{{ total_price }}">
+            
+            <!-- Confirm and Cancel buttons -->
+            <button type="submit" name="confirm" value="yes">Confirm Booking</button>
+            <button type="submit" name="confirm" value="no">Cancel</button>
+        </form>
+    </section>
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

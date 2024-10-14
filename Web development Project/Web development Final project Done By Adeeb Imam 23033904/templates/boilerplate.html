@@ -1,0 +1,34 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|booking</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

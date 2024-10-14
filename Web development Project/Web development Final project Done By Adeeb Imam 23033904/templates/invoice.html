@@ -1,0 +1,207 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>WH | Invoice</title>
+    <!-- Include the QRCode.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Include the html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    
+    <style>
+        /* Additional styling as needed */
+        .invoice_bottom p {
+            font-size: 16px;
+        }
+        .invoice_bottom a {
+            text-decoration: none;
+            color: var(--heading-color);
+        }
+        /* Hide the QR code container */
+        #qrcode {
+            display: none;
+        }
+    </style>
+    <!-- Include jsPDF library -->
+</head>
+
+<body>
+    <!-- Section 1: Navbar -->
+    <nav class="navbar" style="text-align: center; display: flex; justify-content: center;">
+        <div class="logo"><span></span><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+    </nav>
+
+    <!-- Booking Invoice Section -->
+    <section class="invoice-section" id="invoice-content">
+        <div class="invoice-container">
+            <div class="invoice-heading">
+                <h1>Booking Invoice</h1>
+                <p>Thank you for choosing World Hotels!</p>
+            </div>
+            <br>
+            <!-- QR code container (hidden in HTML) -->
+            <div id="qrcode"></div>
+            <!-- Table containing booking details -->
+            <table class="invoice-table">
+                <tr>
+                    <th>Booking ID</th>
+                    <td>{{ booking_id }}</td>
+                </tr>
+                <tr>
+                    <th>Guest Name</th>
+                    <td>{{ full_name }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ guest_email }}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>{{ location }}</td>
+                </tr>
+                <tr>
+                    <th>Date of Reservation</th>
+                    <td>{{ date_of_reservation }}</td>
+                </tr>
+                <tr>
+                    <th>Check-in Date</th>
+                    <td>{{ checkin_date }}</td>
+                </tr>
+                <tr>
+                    <th>Check-out Date</th>
+                    <td>{{ checkout_date }}</td>
+                </tr>
+                <tr>
+                    <th>Number of Guests</th>
+                    <td>{{ number_of_guests }}</td>
+                </tr>
+                <tr>
+                    <th>Room Type</th>
+                    <td>{{ room_type }}</td>
+                </tr>
+                <tr>
+                    <th>Stay Duration</th>
+                    <td>{{ stay_duration }} days</td>
+                </tr>
+                <tr>
+                    <th>Total Amount</th>
+                    <td>£{{ amount }}</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <!-- Button to trigger PDF generation -->
+            <button id="download-pdf">Download PDF</button>
+            <br>
+            <br>
+            <div class="invoice_bottom">
+                <p>Click <a href="{{ url_for('homepage') }}">here</a> to go back to the homepage</p>
+                <br>
+                <p>If you have any questions, please <a href="{{ url_for('contact') }}">contact us</a>.</p>
+                <p>Thank you again for choosing World Hotels! We look forward to serving you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to generate QR code and PDF -->
+    <script>
+        // Function to generate a QR code
+        function generateQRCode(data) {
+            var qrcodeContainer = document.getElementById('qrcode');
+            // Set QR code container to visible
+            qrcodeContainer.style.display = 'block';
+            // Generate QR code
+            new QRCode(qrcodeContainer, {
+                text: data,
+                width: 128,
+                height: 128
+            });
+        }
+
+        // Function to apply orange color to all text elements
+        function applyOrangeColor() {
+            document.body.style.color = 'orange';
+        }
+
+        // Function to remove orange color from all text elements
+        function removeOrangeColor() {
+            document.body.style.color = '';
+        }
+
+        // Function to apply black border color to elements
+        function applyBlackBorder() {
+            const elements = document.querySelectorAll('.invoice-table, .invoice-table th, .invoice-table td');
+            elements.forEach(function(element) {
+                element.style.borderColor = 'black';
+            });
+        }
+
+        // Function to remove black border color from elements
+        function removeBlackBorder() {
+            const elements = document.querySelectorAll('.invoice-table, .invoice-table th, .invoice-table td');
+            elements.forEach(function(element) {
+                element.style.borderColor = '';
+            });
+        }
+
+        // Function to hide the QR code container after generating the PDF
+        function hideQRCodeContainer() {
+            var qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.style.display = 'none';
+        }
+
+        // Get the button element
+        var button = document.getElementById('download-pdf');
+
+        // Add click event listener
+        button.addEventListener('click', function() {
+            // Apply orange color to all text
+            applyOrangeColor();
+
+            // Apply black border color to elements
+            applyBlackBorder();
+
+            // Generate a QR code with the desired data (e.g., URL)
+            generateQRCode('https://www.worldhotels.com');
+
+            // Get the content to be converted
+            var content = document.body;
+
+            // Set html2pdf options
+            var options = {
+                margin: 0, // Set margins to zero for full coverage
+                filename: 'receipt.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                
+            };
+
+            // Use html2pdf to generate the PDF
+            html2pdf().from(content).set(options).save().then(function() {
+                // Once the PDF is generated, remove the orange color
+                removeOrangeColor();
+
+                // Remove the black border color
+                removeBlackBorder();
+
+                // Hide the QR code container after generating the PDF
+                hideQRCodeContainer();
+            });
+        });
+    </script>
+</body>
+</html>

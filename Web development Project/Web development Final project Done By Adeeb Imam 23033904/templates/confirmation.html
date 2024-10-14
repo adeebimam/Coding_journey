@@ -1,0 +1,84 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>WH | Confirmation Page</title>
+</head>
+
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <span style="color: var(--heading-color);">W</span>orld
+            <span style="color: var(--heading-color);">H</span>otels
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 2: Booking Confirmation -->
+    <section class="confirmation-section">
+        <div class="confirmation-container">
+            <div class="confirmation-heading">
+                <h1>Booking Confirmation</h1>
+                <p>Thank you for choosing World Hotels! Your booking has been confirmed.</p>
+            </div>
+            <br>
+            <div class="confirmation-details">
+                <h2>Booking Details</h2>
+                <br>
+                <h2>Location - {{hotel_location}}</h2>
+                <h3>Date</h3>
+                <p>date of reservation - {{todaysdate}}</p>
+                <p> check in date - {{ checkin_date }} </p>
+                <p> Check Out date- {{ checkout_date }}</p>
+                <br>
+                <h3>Booking ID</h3>
+                <p>{{ booking_id }}</p>
+                <br>
+                <h3>Number of Guests</h3>
+                <p>{{ guests }}</p>
+                <br>
+                <h3>Room Type</h3>
+                <p>{{ room_type }}</p>
+                <br>
+                <h3>Stay Duration</h3>
+                <p>{{ stay_duration }} days</p>
+                <br>
+                <h2>Payment Details</h2>
+                <h3>Amount</h3>
+                <p>£{{ total_price }}</p>
+                <h3>Transaction ID</h3>
+                <p>{{ transaction_id }}</p> <!-- Placeholder for transaction ID -->
+                <br>
+                <p><a href="{{ url_for('contact') }}">Contact us</a> for any assistance.</p>
+                <p>Cancellation Policy: You can cancel or modify your booking. Please <a href="{{ url_for('contact') }}">contact us</a>.</p>
+                <p>Thank you again for choosing World Hotels! We look forward to serving you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

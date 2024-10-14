@@ -1,0 +1,61 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|Contact</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li class="active"><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 2: Contact Information -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <h2>Contact World Hotels</h2>
+            <p>We'd love to hear from you! Feel free to reach out through any of the following channels:</p>
+
+            <!-- Social Media Links -->
+            <div class="social-media">
+                
+                <p>Twitter: @worldhotels</p>
+                <p>Facebook: /WorldHotelsOfficial</p>
+                <p>Instagram: @WorldHotelsAdventure</p>
+                <p>LinkedIn: /company/worldhotel</p>
+                
+            </div>
+
+            <!-- Email and Phone -->
+            <div class="contact-details">
+                <p>Email: info@worldhotel.com</p>
+                <p>Phone: +44 178 6051214</p>
+            </div>
+
+            <!-- Additional Information or Slogans -->
+            <p>Connect with us on social media for the latest updates, exclusive offers, and travel inspiration. We're here to make your stay unforgettable!</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

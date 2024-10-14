@@ -1,0 +1,65 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|About</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+    <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li class="active"><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 2: About Us Content -->
+    <section class="about-section">
+        <h2>About worldHotels</h2>
+        <p>Welcome to WorldHotels, your go-to destination for hassle-free hotel bookings. At WorldHotels, we believe in making your stay a memorable experience. Whether you're traveling for business or leisure, we've got the perfect accommodations for you.</p>
+        <p>Our mission is to provide a seamless booking experience, ensuring that every quest leads you to a home away from home. With a wide range of carefully curated hotels in prime locations, we offer comfort, convenience, and quality at every step of your journey.</p>
+        <p>WorldHotels is not just a booking platform; it's a companion on your travel adventures. Our team is dedicated to enhancing your travel experience, and we strive to exceed your expectations with each stay. Discover the joy of stress-free travel with WorldHotels.</p>
+        <br>
+        <h2>Amenities</h2>
+        <p>Indulge in luxurious comfort with our rooms that offer a curated range of amenities designed to enhance your stay. <br><br> Each room boasts complimentary Wi-Fi, a well-stocked mini bar, and a state-of-the-art TV for your entertainment needs. 
+            <br><br> Savor a delightful breakfast to start your day on the right note. Experience an oasis of elegance and convenience with our thoughtfully appointed accommodations, crafted for the discerning traveler.</p>
+    </section>
+
+
+    <!-- Section 3: Testimonials -->
+    <section class="testimonials-section">
+        <h2>What Our Customers Say</h2>
+        <div class="testimonial">
+            <p>"WorldHotels made my last-minute trip a breeze. The booking process was quick, and the hotel exceeded my expectations. Will definitely use it again!"</p>
+            <p class="customer-name">John Doe</p>
+        </div>
+        <div class="testimonial">
+            <p>"I travel frequently for work, and WorldHotels has become my go-to platform. The variety of hotels and the user-friendly interface make it my top choice."</p>
+            <p class="customer-name">Jane Smith</p>
+        </div>
+        <div class="testimonial">
+            <p>"I love the personalized recommendations WorldHotels provides. It feels like they understand my preferences and always suggest the perfect stay."</p>
+            <p class="customer-name">Alex Johnson</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

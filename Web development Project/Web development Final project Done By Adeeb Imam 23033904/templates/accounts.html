@@ -1,0 +1,100 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|Accounts</title>
+</head>
+<body>
+    
+    <!-- Section 1: Navbar -->
+     <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage')}}">Home</a></li>
+            <li><a href="{{ url_for('hotels')}}">Hotels</a></li>
+            <li class="active"><a href="{{ url_for('accounts')}}">Account</a></li>
+            <li><a href="{{ url_for('contact')}}">Contact</a></li>
+            <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+     
+    <section class="accounts-container">
+        <div class="acc-types">
+            {% if 'user_id' in session %}
+                {% if session.user_id == 101 %}
+                    <!-- Display only the logout option if the logged-in user is admin -->
+                    <h1><a href="{{ url_for('logout') }}">Logout</a></h1>
+                    <p>Logged in as <SPAN style="color: #7affa2;">Admin</SPAN></p>
+                    <br>
+                    <br>
+                    <h1><a href="{{ url_for('forgot_password') }}">Change Password</a></h1>
+                    <p>Change password for admin or customers</p>
+                    <br>
+                    <br>
+                    <h1><a href="{{ url_for('manage_outline')}}">Managment</a></h1>
+                    <p>Change the details of hotels or customers</p>
+                    <br>
+                    <br>
+                    <h1><a href="{{ url_for('admin_reports')}}">Reports</a></h1>
+                    <p>Generate essential reports</p>
+                    <br>
+                    <br>
+                {% else %}
+                    <!-- Display logout option and user information if logged in as a regular user -->
+                    <h1><a href="{{ url_for('logout') }}">Logout</a></h1>
+                    <br>
+                    <p>You are logged in as <span style="color: #7affa2; font-family: 'Times New Roman', Times, serif;">{{ session.email }}</span></p>
+                    <br>
+                    <p>To change your current password, please click <b><a href="{{ url_for('forgot_password') }}" style="font-size: 16px;">here</a></b></p>
+                    <br>
+                    <br>
+                    <h1><a href="{{ url_for('my_bookings') }}">My Bookings</a></h1>
+                {% endif %}
+            {% else %}
+                <!-- Display login option if not logged in -->
+                <h1><a href="{{ url_for('login') }}">Log in</a></h1>
+                <br>
+                <p>Login to reveal personalized offers and make your next stay extraordinary.</p>
+            {% endif %}
+        </div>
+    
+        <!-- Display signup and admin options only if not logged in -->
+        {% if not 'user_id' in session %}
+            <div class="acc-types">
+                <h2><a href="{{ url_for('signup') }}">Sign up</a></h2>
+                <br>
+                <p>Don't have an account? We got you; click here to sign up!</p>
+            </div>
+            <div class="acc-types">
+                <h2><a href="{{ url_for('admin') }}">Admin</a></h2>
+                <br>
+                <p>Administrator Access</p>
+            </div>
+        {% endif %}
+    </section>
+
+
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+
+</body>
+</html>

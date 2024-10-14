@@ -1,0 +1,102 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Edit Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+
+    <!-- Edit Booking Form -->
+    <div class="booking-section">
+        <h1>Edit Booking</h1>
+        <div class="booking-section-container">
+            <form action="{{ url_for('edit_booking', booking_id=booking_id) }}" method="post">
+                <!-- Location -->
+                <div class="input-group">
+                    <label for="location">Location:</label>
+                    <select id="location" name="location" required>
+                        {% for location in locations %}
+                        <option value="{{ location }}" {% if location == hotel_city %}selected{% endif %}>
+                            {{ location }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Check-in Date -->
+                <div class="input-group">
+                    <label for="checkin_date">Check-in <br> Date:</label>
+                    <input type="date" id="checkin_date" name="checkin_date" value="{{ checkin_date }}" required>
+                </div>
+
+                <!-- Check-out Date -->
+                <div class="input-group">
+                    <label for="checkout_date">Check-out <br> Date:</label>
+                    <input type="date" id="checkout_date" name="checkout_date" value="{{ checkout_date }}" required>
+                </div>
+
+                <!-- Number of Guests -->
+                <div class="input-group">
+                    <label for="num_of_guests">Number of <br> Guests:</label>
+                    <input type="number" id="number_of_guests" name="number_of_guests" value="{{ number_of_guests }}" required min="1">
+                </div>
+
+                <!-- Room Type -->
+                <div class="input-group">
+                    <label for="room_type">Room <br> Type:</label>
+                    <select id="room_type" name="room_type" required>
+                        {% for room_type_option in room_types %}
+                        <option value="{{ room_type_option }}" {% if room_type_option == room_type %}selected{% endif %}>
+                            {{ room_type_option }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn">Update Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1478 @@
+/* Done By Adeeb Imam */
+/* Student Number 23033904 */
+/* Module Web Development And Databases */
+/* SQL File */
+
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root
+{
+    
+    --heading-color: #2d88df;
+    --hover-color: #0F52BA;
+    --border-color:#1F51FF;
+}
+
+
+
+body {
+    font-family: 'Times New Roman', serif;
+    background-color: #121212; /* Dark background color */
+    color: #fff; /* Text color */
+}
+
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: left; /* Align center for better appearance */
+    padding: 20px;
+    background-color: #292929; /* Footer background color */
+    color: white; /* Text color */
+}
+
+
+/*Home page*/
+/* Section 1: Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #292929; /* Navbar background color */
+}
+
+.logo {
+    font-size: 40px;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+    font-size: 18px;
+}
+
+.nav-links .active a
+{
+    color: var(--heading-color);
+}
+
+.nav-links a:hover
+{
+    color: var(--hover-color);
+}
+
+/*flask flash messages*/
+/* General flash message styling */
+.flash-messages-login {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0 0 10px 0; /* Bottom margin for spacing */
+}
+
+/* Styling for success flash messages */
+.flash-messages-login .success {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text color */
+    padding: 10px;
+    border: 1px solid #c3e6cb; /* Border for the message */
+    border-radius: 4px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.flash-messages-login .fail {
+    background-color: #edd4d4; /* Light green background */
+    color: #851919; /* Dark green text color */
+    padding: 10px;
+    border: 1px solid #e6c3c3; /* Border for the message */
+    border-radius: 4px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+/* Section 2: Slogan and Booking Form */
+.booking-section {
+    text-align: center;
+    padding: 50px;
+}
+
+.slogan {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
+.booking-section-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-section form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transform: translateY(10%);
+
+}
+
+.input-group {
+    position: relative;
+}
+
+label {
+    position: absolute;
+     
+    left: -20px;
+    font-size: 14px; /* Keep the label size consistent */
+    pointer-events: none;
+    
+}
+
+.input-group input,
+.input-group select {
+    width: 75%; /* Set the width of input and select elements to 80% */
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: none; /* Remove transition effects */
+    text-align: center; /* Align the text to the right */
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: var(--heading-color);
+}
+
+
+
+
+.form-group {
+    margin-top: 1rem;
+}
+
+button {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+/*Booking page*/
+
+/* Section 3: Deals */
+.deals-section {
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    
+}
+
+.hotel-deals {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+
+.hotel-deal {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hotel-deal img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.hotel-deal a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.hotel-deal a:hover {
+    color: var(--heading-color);
+}
+
+.hotel-more a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.hotel-more a:hover {
+    color: var(--heading-color);
+}
+
+/*about page*/
+
+/* Section 2: About Us Content */
+.about-section {
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 20px; /* Add margin to move content down */
+}
+
+.about-section p
+{
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px ;
+}
+
+.about-section h2
+{
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 20px;
+    color: var(--heading-color);
+}
+
+
+/* Section 3: Testimonials */
+.testimonials-section {
+    text-align: center;
+    padding: 50px;
+    background-color: #1a1a1a; /* Testimonials background color */
+}
+
+.testimonials-section h2
+{
+    margin-bottom: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: var(--heading-color);
+}
+
+.testimonial {
+    margin-bottom: 30px;
+}
+
+.testimonial p {
+    font-style: italic;
+    font-size: 20px;
+}
+
+.customer-name {
+    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+
+/*Contact Page*/
+
+/* Section 2: Contact Information */
+.contact-section {
+    text-align: center;
+    padding: 50px;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.social-media {
+    margin-top: 20px;
+}
+
+.social-media p
+{
+    display: block;
+    margin-bottom: 10px;
+    color: var(--heading-color); 
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 25px; 
+}
+
+.contact-details {
+    margin-top: 20px;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    font-size: 25px;
+
+}
+
+/* Hotel Section */
+.hotel-listings h2
+{
+    text-align: center;
+    padding-top: 5%;
+    font-size: 25px;
+    color: var(--heading-color);
+}
+.hotel-section {
+    text-align: center;
+    margin: 20px;
+}
+
+.hotels-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.hotel-city {
+    width: 30%; /* Each hotel takes up 30% of the container width */
+    height: 300px; /* Set a fixed height for all images */
+    margin: 10px;
+    text-align: center;
+    /* Hide any overflow to maintain a consistent size */
+    position: relative; /* Create a stacking context for the pseudo-element */
+    margin-bottom: 60px;
+    
+
+}
+
+.hotel-city img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire container */
+    border-radius: 8px;
+    transition: box-shadow 0.3s; /* Add transition for box-shadow */
+    border: 2px solid transparent;
+}
+
+.hotel-city:hover img {
+    border-color:  var(--border-color); /* Shadow on hover */
+}
+
+.hotel-city p {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    
+}
+
+.hotel-city a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.hotel-city a:hover
+{
+    color: var(--heading-color);
+}
+
+.hotel-heading p {
+    text-align: center;
+    color: #fff;
+    font-size: 30px;
+}
+
+/*Account page*/
+
+.accounts-container {
+    text-align: center;
+    padding: 10rem;
+}
+
+.acc-types {
+    
+    margin: 5%;
+}
+
+.acc-types a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 30px;
+}
+
+.acc-types a:hover {
+    color:var(--heading-color);
+}
+
+.acc-types p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+}
+
+.forgot-password-accounts a 
+{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+
+.login-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+}
+
+
+.login-section form {
+    
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-details {
+    position: relative;
+}
+
+.login-details label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+}
+
+.show-password label
+{
+   position: relative;
+}
+.show-password input[type="checkbox"] {
+   position: relative; /* Adjust the margin to move the checkbox to the right of the text */
+}
+
+.forgot-password a 
+{
+    text-decoration: none;
+    color: white;
+
+}
+
+.forgot-password a:hover
+{
+    color: var(--hover-color)
+}
+/* Forgot Password Section */
+.forgot-password-section {
+    text-align: center;
+    padding: 40px; /* Adjust padding as needed */
+    color: #fff;
+    
+}
+
+.forgot-password-container {
+    max-width: 400px; /* Width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding around the form */
+    border: 1px solid var(--border-color); /* Border around the form */
+    border-radius: 10px; /* Rounded corners */
+     
+}
+
+.forgot-password-section h2 {
+    color: var(--heading-color); /* Dark blue color for the heading */
+    margin-bottom: 20px; /* Margin below the heading */
+    font-size: 28px; /* Larger font size for the heading */
+}
+
+.forgot-password-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form elements */
+   
+}
+
+.forgot-password-container label {
+    
+    position: relative;
+    left: auto;    
+    font-size: 28px; /* Keep the label size consistent */
+    pointer-events: none;
+    
+}
+.forgot-password-container input {
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #333; /* Border around input fields */
+    border-radius: 5px; /* Rounded corners */
+    outline: none;
+    background-color: #333; /* Dark background color for input fields */
+    color: #fff; /* White text color for input fields */
+}
+
+.forgot-password-container input:focus {
+    border-color: var(--heading-color); /* Border color on focus */
+}
+
+.forgot-password-container input[type="submit"] {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.forgot-password-container input[type="submit"]:hover {
+    background-color: var(--hover-color); /* Background color on hover */
+}
+
+
+/* Reset Password Section */
+.reset-password-section {
+    text-align: center;
+    padding: 40px; /* Adjust padding as needed */
+    color: #fff;
+}
+
+.reset-password-container {
+    max-width: 400px; /* Width of the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Padding around the form */
+    border: 1px solid var(--border-color); /* Border around the form */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #292929; /* Background color of the form */
+}
+
+.reset-password-section h2 {
+    color: var(--heading-color); /* Dark blue color for the heading */
+    margin-bottom: 20px; /* Margin below the heading */
+    font-size: 28px; /* Larger font size for the heading */
+}
+
+.reset-password-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between form elements */
+}
+
+.reset-password-container label {
+    color: white; /* White text for labels */
+    font-size: 18px; /* Font size for labels */
+    position: relative;
+    left: auto;    
+    font-size: 28px; /* Keep the label size consistent */
+    pointer-events: none;
+}
+
+.reset-password-container input {
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #333; /* Border around input fields */
+    border-radius: 5px; /* Rounded corners */
+    outline: none;
+    background-color: #333; /* Dark background color for input fields */
+    color: #fff; /* White text color for input fields */
+}
+
+.reset-password-container input:focus {
+    border-color: var(--heading-color); /* Border color on focus */
+}
+
+.reset-password-container input[type="submit"] {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.reset-password-container input[type="submit"]:hover {
+    background-color: var(--hover-color); /* Background color on hover */
+}
+
+
+.login-details input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: 0.3s;
+    margin-left: 25%;
+}
+
+.login-details input:focus {
+    border-color: var(--heading-color);
+}
+
+.login-button {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--hover-color);
+}
+
+.login-details label.highlight-label {
+    transition: color 0.3s;
+}
+
+
+
+/* Section 6: Sign Up Page */
+.signup-section form {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.signup-details {
+    position: relative;
+}
+
+.signup-details label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+}
+
+.signup-details input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: 0.3s;
+    margin-left: 25%;
+}
+
+.signup-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+}
+
+.signup-section h1
+{
+    text-align: center;
+}
+
+.signup-section p {
+    font-style: italic;
+    color: #4D4DFF;
+    text-align: center;
+}
+
+.signup-details input:focus {
+    border-color: var(--heading-color);
+}
+
+/*Admin*/
+
+.admin-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+}
+.admin-container form {
+    
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+
+.admin-details {
+    position: relative;
+}
+
+.admin-details label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+}
+
+.admin-details input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: 0.3s;
+    margin-left: 25%;
+}
+
+.admin-details input:focus {
+    border-color: var(--heading-color);
+}
+
+.login-button {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--hover-color);
+}
+
+/* Admin page container styling */
+.admin-container {
+    text-align: center;
+    padding: 40px; /* Adjust padding as needed */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px auto; /* Center container and add vertical spacing */
+    width: 80%; /* Adjust width as needed */
+}
+
+
+/* Admin page headings */
+.admin-container h1, h2 {
+    color: var(--heading-color); /* Use the heading color variable */
+    margin-bottom: 20px; /* Space below headings */
+}
+
+/* Form styling for admin pages */
+.admin-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form elements */
+    align-items: center; /* Center align form elements */
+    width: 60%; /* Adjust form width as needed */
+    margin: 0 auto; /* Center the form */
+}
+
+/* Form groups */
+.admin-container .form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align form groups */
+}
+
+/* Form labels */
+.admin-container label {
+    font-size: 16px; /* Adjust font size as needed */
+    color: white; /* Use white text */
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+/* Form inputs */
+.admin-container input {
+    width: 100%; /* Make inputs full width */
+    padding: 10px; /* Padding inside inputs */
+    border: 1px solid var(--border-color); /* Border color from your CSS */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #333; /* Dark background for inputs */
+    color: white; /* White text */
+}
+
+/* Form button */
+.admin-container button {
+    background-color: var(--heading-color); /* Heading color for buttons */
+    color: white; /* White text */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Show pointer cursor */
+    font-size: 16px; /* Adjust font size as needed */
+    transition: background-color 0.3s; /* Smooth color transition */
+}
+
+/* Button hover state */
+.admin-container button:hover {
+    background-color: var(--hover-color); /* Hover color for buttons */
+}
+
+/* Table styling */
+table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse table borders */
+    margin: 20px auto; /* Center the table */
+}
+
+/* Table header and row styling */
+th, td {
+    padding: 10px; /* Padding inside cells */
+    border: 1px solid var(--border-color); /* Border color */
+    text-align: center; /* Center align text */
+    background-color: #333; /* Background color */
+    color: white; /* Text color */
+}
+
+/* Links styling */
+a {
+    color: var(--heading-color); /* Heading color for links */
+    text-decoration: none; /* No underline */
+   
+}
+
+/* Link hover state */
+a:hover {
+    color: var(--hover-color); /* Hover color for links */
+}
+
+
+.admin-details label.highlight-label {
+    transition: color 0.3s;
+}
+
+.admin-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.admin-content h1 {
+    color: var(--heading-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 35%;
+
+}
+
+.form-group input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    
+    color: #fff;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+.form-group input:focus {
+    border-color: var(--heading-color);
+}
+
+button.btn {
+    background-color: var(--heading-color);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn:hover {
+    background-color: var(--hover-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #444;
+    color: black;
+    background-color: #f3f3f3;
+}
+
+table th {
+    background-color: var(--heading-color);
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    text-align: center;
+}
+
+table tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+
+.payment-heading h1 {
+    font-size: xx-large;
+    color: var(--heading-color);
+}
+
+.payment-section {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.payment-form {
+    margin: 5%;
+}
+
+.input-payment {
+    position: relative;
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+}
+
+.input-payment label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    color: #fff;
+    transition: 0.3s;
+    pointer-events: none;
+    transform-origin: top left;
+}
+
+.input-payment input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.input-payment input:focus {
+    border-color: var(--heading-color);
+}
+
+.input-payment input:focus + label {
+    top: -20px;
+    font-size: 12px;
+    color: var(--heading-color);
+}
+
+.form-payment {
+    margin-top: 1rem;
+}
+
+button {
+    background-color: var(--heading-color);
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    color: #fff;
+}
+
+button a {
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: var(--hover-color);
+}
+
+.payment-options img {
+    margin-top: 10px;
+    width: 200px;
+    border-radius: 10px;
+}
+
+/*Confirmation page*/
+
+.confirmation-section
+{
+    text-align: center;
+    padding: 50px;
+}
+
+.confirmation-container
+{
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section {
+    text-align: center;
+    padding: 50px;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.confirmation-heading h1
+{
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+.confirmation-heading p
+{
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confirmation-details a
+{
+    color: var(--heading-color);
+    text-decoration: none;
+}
+
+.confirmation-details a:hover
+{
+    color: var(--hover-color);
+}
+
+.confirmation-details p
+{
+    font-size: 17px;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.confirmation-details h2
+{
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+.confirmation-details h3
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 5px;
+}
+
+/* Booking overview section */
+.booking-overview-section {
+    padding-top: 10px;
+    justify-content: center; /* Center the form horizontally */
+    text-align: center;
+    height: 100vh; /* Adjust the height as needed to center vertically */
+}
+
+.booking-overview-section form {
+    display: flex;
+    flex-direction: vertical; /* Changed flex-direction to column */
+    gap: 20px; /* Space between form elements */
+    padding: 20px;
+    max-width: 400px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the form */
+    text-align: center ;
+}
+
+.booking-overview-section h2 {
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+    color: var(--heading-color);
+}
+
+.booking-overview-section p {
+    margin: 10px 0; /* Add space between paragraphs */
+}
+
+/* Container for buttons */
+.booking-overview-section .button-container {
+    text-align: right; /* Center the buttons in the container */
+}
+
+/* Confirm and cancel booking buttons */
+.booking-overview-section button {
+    width: 40%; /* Make the buttons smaller */
+    padding: 8px; /* Adjust padding as needed */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Add cursor pointer on hover */
+    margin: 5px; /* Add space between buttons */
+}
+
+.booking-overview-section button[type="submit"]:first-of-type {
+    background-color: #28a745; /* Green for confirm booking */
+    color: white; /* White text */
+}
+
+.booking-overview-section button[type="submit"]:last-of-type {
+    background-color: #dc3545; /* Red for cancel booking */
+    color: white; /* White text */
+}
+
+.booking-overview-section button:hover {
+    opacity: 0.5; /* Slightly darken buttons on hover */
+}
+
+/* My Bookings Section */
+.my-bookings-section {
+    padding: 40px; /* Padding around the section */
+    text-align: center; /* Center-align the section */
+}
+
+.my-bookings-section h1 {
+    color: var(--heading-color); /* Dark blue color for the heading */
+    margin-bottom: 20px; /* Margin below the heading */
+    font-size: 28px; /* Large font size for the heading */
+}
+
+/* Bookings Table Styles */
+.my-bookings-section table {
+    width: 100%; /* Full width table */
+    border-collapse: collapse; /* Collapse borders */
+    margin: 0 auto; /* Center the table */
+    max-width: 800px; /* Maximum width of the table */
+    border: 1px solid black; /* Light gray border */
+}
+
+.my-bookings-section th,
+.my-bookings-section td {
+    padding: 10px; /* Padding inside cells */
+    border: 1px solid black; /* Light gray border around cells */
+    text-align: center; /* Left-align the text */
+}
+
+.my-bookings-section th {
+    background-color: #004080; /* Dark blue background color for table header */
+    color: white; /* White text color for table header */
+}
+
+.my-bookings-section td {
+    background-color: powderblue;
+    color: black /* Light gray background color for table rows */
+}
+
+/* No bookings message */
+.my-bookings-section p {
+    color: red; /* Light gray color for the message */
+    font-size: 16px; /* Medium font size */
+}
+
+/* Main container for the invoice section */
+.invoice-section {
+    text-align: center; /* Center-align all text */
+    padding: 40px; /* Padding around the section */
+    
+    color: white; /* White text color */
+    margin: 0 auto; /* Center the container */
+    width: 80%; /* Width of the content */
+    max-width: 800px; /* Maximum width to keep it centered */
+    border-radius: 10px; /* Rounded corners */
+    
+}
+
+/* Styling for headings */
+.invoice-section h1 {
+    font-size: 28px; /* Adjusted font size */
+    margin-bottom: 20px; /* Space below the heading */
+    color: var(--heading-color); /* Heading color */
+}
+
+/* Styling for invoice details */
+.invoice-details {
+    font-size: 18px; /* Font size for details */
+    margin-bottom: 15px; /* Space between details */
+    margin-bottom: 5px;
+}
+
+/* Styling for strong elements */
+.invoice-details strong {
+    color: var(--heading-color); /* Heading color for emphasis */
+    font-weight: bold; /* Bold labels */
+    margin-right: 5px; /* Space after labels */
+}
+.invoice-details p
+{
+    margin-bottom: 5px;
+}
+
+.invoice-table {
+    margin: 0 auto; /* Centers the table horizontally */
+    
+}
+
+.invoice-table th
+{
+    text-align: left;
+}
+
+.invoice-table td
+{
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.invoice-table td, th
+{
+    border: 1px solid #ccc; /* Light gray border around each cell */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.invoice-table {
+    width: 50%; /* Width of the table */
+    border-collapse: collapse; /* Collapse borders to create interior borders */
+    margin: 0 auto; /* Center the table */
+    
+}
+
+
+/* Media Query for Tablets and Smaller Screens */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 20px;
+    }
+
+    .footer {
+        font-size: 14px;
+    }
+
+    .booking-section {
+        padding: 30px;
+    }
+
+    .booking-section-container {
+        flex-direction: column;
+    }
+
+    .booking-section form {
+        max-width: none;
+        transform: none;
+    }
+
+    .hotel-deals {
+        flex-direction: column;
+    }
+
+    .hotel-deal {
+        width: 100%;
+    }
+
+    .testimonials-section,
+    .contact-section,
+    .hotel-listings,
+    .about-section {
+        padding: 30px;
+    }
+
+    .hotel-city img {
+        max-width: 100%;
+    }
+
+    .accounts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .acc-types {
+        width: 70%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px;
+    }
+
+    .slogan {
+        font-size: 30px;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+    .booking-section p {
+        font-size: 16px;
+    }
+
+    .booking-section form {
+        max-width: 300px;
+    }
+    
+
+    .hotel-deals,
+    .testimonials-section,
+    .contact-section,
+    .hotel-listings,
+    .account-section,
+    .about-section {
+        padding: 20px;
+    }
+
+    .hotel h3 {
+        font-size: 18px;
+    }
+
+    .hotel p {
+        font-size: 14px;
+    }
+
+    .testimonial p {
+        font-size: 16px;
+    }
+
+    .customer-name {
+        font-size: 14px;
+    }
+
+    .hotel-city img {
+        max-width: 100%;
+        max-height: 75%;
+    }
+
+    .about-section p {
+        font-size: 20px;
+    }
+
+    .accounts-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-group input,
+    .input-group select {
+        width: 50%;
+    }
+
+    .accounts-container p {
+        font-size: 8px;
+    }
+
+    .accounts-container a {
+        font-size: 18px;
+    }
+
+    .acc-types {
+        margin-bottom: 5rem;
+        width: 90%;
+    }
+
+    .slogan {
+        font-size: 20px;
+    }
+
+    .login-details label {
+        font-size: 18px;
+    }
+
+    .signup-details label {
+        font-size: 18px;
+    }
+
+    .signup-details-container {
+        padding: 25px;
+    }
+
+    .payment-options {
+        padding: 25px;
+    }
+
+    .payment-form label {
+        font-size: 15px;
+    }
+
+    .input-payment input {
+        width: 50%;
+        transform: translateX(60px);
+    }
+
+    .input-payment {
+        margin-bottom: 50px;
+    }
+
+    .payment-section p {
+        font-size: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .payment-form {
+        padding: 25px;
+    }
+
+    .acc-types {
+        width: 90%;
+    }
+}
+

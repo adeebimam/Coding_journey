@@ -1,0 +1,101 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>WH | Admin</title>
+</head>
+
+<body>
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li class="active"><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Section 2: admin Form -->
+    <section class="login-section">
+        <br>
+        <h1 style="text-align: center;">Admin Login Page</h1>
+        <br>
+        <div class="login-details-container">
+            
+            <!-- Form to capture admin details -->
+            <form action="{{ url_for('admin') }}" method="post">
+                <div class="login-details">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="password-input-container">
+                    <div class="login-details">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        
+                    </div>
+                    <br>
+                    <div class="show-password">
+                        <label for="toggle-password" style="margin-left: 20px;">Show Password</label>
+                        <input type="checkbox" id="toggle-password" >
+                    </div>
+
+                    
+                    
+                </div>
+                <input type="submit" value="Login" class="login-button">
+
+            </form>
+            <!-- End of form -->
+        </div>
+    </section>
+    <!-- End of admin section -->
+
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+<!-- JavaScript to toggle password visibility -->
+<script>
+    // Function to toggle password visibility
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        var checkbox = document.getElementById("toggle-password");
+        // Check the state of the checkbox and update the password input type accordingly
+        if (checkbox.checked) {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+
+    // Add event listener to the checkbox for the change event
+    document.getElementById("toggle-password").addEventListener("change", togglePasswordVisibility);
+</script>
+
+</body>
+
+</html>

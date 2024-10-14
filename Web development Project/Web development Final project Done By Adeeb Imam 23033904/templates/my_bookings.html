@@ -1,0 +1,105 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>My Bookings</title>
+
+    <style>
+        .receipt-link a
+        {
+            text-decoration: none;
+            color: black;
+        }
+
+        .receipt-link a:hover
+        {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"> <span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li class="active"><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+
+    <!-- My Bookings Section -->
+    <section class="my-bookings-section">
+        <h1>My Bookings</h1>
+
+        {% if bookings %}
+            <table class="bookings-table">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Hotel City</th>
+                        <th>Check-In Date</th>
+                        <th>Check-Out Date</th>
+                        <th>Total Price</th>
+                        <th>Amendments</th>
+                        <th>Receipt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking[0] }}</td>
+                        <td>{{ booking[1] }}</td>
+                        <td>{{ booking[2].strftime('%Y-%m-%d') }}</td>
+                        <td>{{ booking[3].strftime('%Y-%m-%d') }}</td>
+                        <td>£{{ booking[4] }}</td>
+                        
+                        <td>
+                            <form action="{{ url_for('cancel_booking', booking_id=booking[0]) }}" method="post">
+                                <button type="submit">Cancel Booking</button>
+                            </form>
+                        </td>
+                        
+                        <td>
+                            <div class="receipt-link">
+                                <p><a href="{{ url_for('invoice', booking_id=booking[0])}}">Receipt</a></p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no bookings at the moment.</p>
+        {% endif %}
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

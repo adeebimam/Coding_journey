@@ -1,0 +1,163 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="StyleSheet" href="{{url_for('static', filename = 'styles.css')}}" type = "text/css">
+    <title>WH|Hotels</title>
+</head>
+<body>
+
+    <!-- Section 1: Navbar -->
+    <nav class="navbar">
+      <div class="logo"><span style="color:var(--heading-color);">W</span>orld<span style="color:var(--heading-color);">H</span>otels</div>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('homepage')}}">Home</a></li>
+        <li class="active"><a href="{{ url_for('hotels')}}">Hotels</a></li>
+        <li><a href="{{ url_for('accounts')}}">Account</a></li>
+        <li><a href="{{ url_for('contact')}}">Contact</a></li>
+        <li><a href="{{ url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section 2: Hotel Listings -->
+    <section class="hotel-listings">
+        <h2>Explore Our Featured Hotels</h2>
+
+        <div class="hotel-section">
+            <br>
+            <div class="hotel-heading">
+              <p>Wherever you go, <br>we've got a welcoming hotel waiting for you in every cityscape!</p>
+            </div>
+            <br>
+            <br>
+            <div class="hotels-list">
+              
+              <div class="hotel-city">
+                <!-- Hotel 1 -->
+                <a href="{{ url_for('booking_form', location='Aberdeen') }}"><img src="{{ url_for('static', filename='images/hotel1.jpg') }}" alt="Hotel 1"></a>
+                <h3><a href="{{ url_for('booking_form', location='Aberdeen') }}">Aberdeen</a></h3>
+                <!-- Display hotel price -->
+                <p>Price per night: £{{ hotel_prices['Aberdeen'] }}</p>
+              </div>
+
+              <div class="hotel-city">
+                <!-- Hotel 2 -->
+                <a href="{{ url_for('booking_form', location='Belfast') }}"><img src="{{ url_for('static', filename='images/hotel2.jpg') }}" alt="Hotel 1"></a>
+                <h3><a href="{{ url_for('booking_form', location='Belfast') }}">Belfast</a></h3>
+                <!-- Display hotel price -->
+                <p>Price per night: £{{ hotel_prices['Belfast'] }}</p>
+              </div>
+                  
+              <div class="hotel-city">
+                <!-- Hotel 3 -->
+                <a href="{{ url_for('booking_form', location='Birmingham') }}"><img src="{{ url_for('static', filename='images/hotel3.jpg') }}" alt="Hotel 1"></a>
+                <h3><a href="{{ url_for('booking_form', location='Birmingham') }}">Birmingham</a></h3>
+                <!-- Display hotel price -->
+                <p>Price per night: £{{ hotel_prices['Birmingham'] }}</p>
+              </div>
+                  
+
+              <div class="hotel-city">
+                <!-- Hotel 4 -->
+                <a href="{{ url_for('booking_form', location='Bristol') }}"><img src="{{ url_for('static', filename='images/hotel4.jpg') }}" alt="Hotel 1"></a>
+                <h3><a href="{{ url_for('booking_form', location='Bristol') }}">Bristol</a></h3>
+                <!-- Display hotel price -->
+                <p>Price per night: £{{ hotel_prices['Bristol'] }}</p>
+              </div>
+              <br>
+              <div class="hotel-city">
+                <!-- Hotel 5 -->
+                <a href="{{ url_for('booking_form', location='Cardiff') }}"><img src="{{ url_for('static', filename='images/hotel5.jpg') }}" alt="Hotel 1"></a>
+                <h3><a href="{{ url_for('booking_form', location='Cardiff') }}">Cardiff</a></h3>
+                <!-- Display hotel price -->
+                <p>Price per night: £{{ hotel_prices['Cardiff'] }}</p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Edinburgh')}}"><img src="{{url_for('static', filename='images/hotel6.jpg')}}" alt="Hotel 6">
+                <h3><a href="{{url_for('booking_form', location='Edinburgh')}}"></a>Edinburgh</h3>
+                <p>Price per night: £{{ hotel_prices['Edinburgh'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Glasgow')}}"><img src="{{url_for('static', filename='images/hotel7.jpg')}}" alt="Hotel 7">
+                <h3><a href="{{ url_for('booking_form', location='Glasgow')}}">Glasgow</a></h3>
+                <p>Price per night: £{{ hotel_prices['Glasgow'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='London')}}"><img src="{{url_for('static', filename='images/hotel8.jpg')}}" alt="Hotel 8">
+                <h3><a href="{{ url_for('booking_form', location='London')}}">London</a></h3>
+                <p>Price per night: £{{ hotel_prices['London'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Manchester')}}"><img src="{{url_for('static', filename='images/hotel9.jpg')}}" alt="Hotel 9">
+                <h3><a href="{{ url_for('booking_form', location='Manchester')}}">Manchester</a></h3>
+                <p>Price per night: £{{ hotel_prices['Manchester'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='New Castle')}}"><img src="{{url_for('static', filename='images/hotel10.jpg')}}" alt="Hotel 10">
+                <h3><a href="{{ url_for('booking_form', location='New Castle')}}">New Castle</a></h3>
+                <p>Price per night: £{{ hotel_prices['New Castle'] }} </p>
+              </div>
+            
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Norwich')}}"><img src="{{url_for('static', filename='images/hotel11.jpg')}}" alt="Hotel 11">
+                <h3><a href="{{ url_for('booking_form', location='Norwich')}}">Norwich</a></h3>
+                <p>Price per night: £{{ hotel_prices['Norwich'] }} </p>
+              </div>
+                       
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Nottingham')}}"><img src="{{url_for('static', filename='images/hotel12.jpg')}}" alt="Hotel 12">
+                <h3><a href="{{ url_for('booking_form', location='Nottingham')}}">Nottingham</a></h3>
+                <p>Price per night: £{{ hotel_prices['Nottingham'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Oxford')}}"><img src="{{url_for('static', filename='images/hotel13.jpg')}}" alt="Hotel 13">
+                <h3><a href="{{ url_for('booking_form', location='Oxford')}}">Oxford</a></h3>
+                <p>Price per night: £{{ hotel_prices['Oxford'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Plymouth')}}"><img src="{{url_for('static', filename='images/hotel14.jpg')}}" alt="Hotel 14">
+                <h3><a href="{{ url_for('booking_form', location='Plymouth')}}">Plymouth</a></h3>
+                <p>Price per night: £{{ hotel_prices['Plymouth'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Swansea')}}"><img src="{{url_for('static', filename='images/hotel15.jpg')}}" alt="Hotel 15">
+                <h3><a href="{{ url_for('booking_form', location='Swansea')}}">Swansea</a></h3>
+                <p>Price per night: £{{ hotel_prices['Swansea'] }} </p>
+              </div>
+
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Bournemouth')}}"><img src="{{url_for('static', filename='images/hotel16.jpg')}}" alt="Hotel 16">
+                <h3><a href="{{ url_for('booking_form', location='Bournemouth')}}">Bournemouth</a></h3>
+                <p>Price per night: £{{ hotel_prices['Bournemouth'] }} </p>
+              </div>
+              
+              <div class="hotel-city">
+                <a href="{{ url_for('booking_form', location='Kent')}}"><img src="{{url_for('static', filename='images/hotel17.jpg')}}" alt="Hotel 17">
+                <h3><a href="{{ url_for('booking_form', location='Kent')}}">Kent</a></h3>
+                <p>Price per night: £{{ hotel_prices['Kent'] }} </p>
+              </div>
+              
+            </div>
+    
+        </div>
+        <!-- Section 3: Footer -->
+<footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

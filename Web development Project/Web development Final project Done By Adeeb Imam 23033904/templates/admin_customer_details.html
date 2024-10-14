@@ -1,0 +1,119 @@
+<!-- Done By Adeeb Imam -->
+<!-- Student Number 23033904 -->
+<!-- Module Web Development And Databases -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" type="text/css">
+    <title>WH|Booking</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><span style="color: var(--heading-color);">W</span>orld<span style="color: var(--heading-color);">H</span>otels</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hotels') }}">Hotels</a></li>
+            <li><a href="{{ url_for('accounts') }}">Account</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+        <ul class="flash-messages-login">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Admin container -->
+    <div class="admin-container">
+        <h1>Customer Details</h1>
+        
+        <!-- Display customer's personal information -->
+        <p><strong>First Name:</strong> {{ customer_details[0] }}</p>
+        <p><strong>Last Name:</strong> {{ customer_details[1] }}</p>
+        <p><strong>Email:</strong> {{ customer_details[2] }}</p>
+        
+        <!-- Form to edit customer details -->
+        <form action="{{ url_for('view_customer_details', customer_id=customer_id) }}" method="POST">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" value="{{ customer_details[0] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ customer_details[1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="{{ customer_details[2] }}" required>
+            </div>
+            <!-- Button to save changes -->
+            <button type="submit" class="btn-save">Save Changes</button>
+        </form>
+        <br>
+        <br>
+
+        <!-- Form to delete customer -->
+        <form action="{{ url_for('view_customer_details', customer_id=customer_id) }}" method="POST">
+            <input type="hidden" name="delete_customer" value="1">
+            <button type="submit" class="btn-delete">Delete Customer</button>
+        </form>
+        <br>
+        <br>
+
+        <!-- Customer's bookings -->
+        <h2>Bookings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Check-In Date</th>
+                    <th>Check-Out Date</th>
+                    <th>Total Price</th>
+                    <th>Location</th>
+                    <th>Room Type</th>
+                    <th>Number of Guests</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in customer_bookings %}
+                    <tr>
+                        <td>{{ booking[0] }}</td>
+                        <td>{{ booking[1] }}</td>
+                        <td>{{ booking[2] }}</td>
+                        <td>£{{ booking[3] }}</td>
+                        <td>{{ booking[4] }}</td>
+                        <td>{{ booking[5] }}</td>
+                        <td>{{ booking[6] }}</td>
+                        <td>
+                            <a href="{{ url_for('edit_booking', booking_id=booking[0]) }}">Edit Booking</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>2023 WorldHotels. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
