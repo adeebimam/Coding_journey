@@ -1,3 +1,14 @@
+"""
+This program simulates a turtle race with user interaction:
+
+Screen Class: Captures user bets and sets up the race environment.
+Turtle Class: Creates turtles with unique colors and controls their movement.
+Random Module: Adds unpredictability to the race by varying turtle movements.
+Includes a betting system to make the race interactive.
+
+AI 27/01/2025
+"""
+
 # Import necessary modules
 from turtle import Turtle, Screen  # For turtle graphics
 from random import Random  # For generating random values

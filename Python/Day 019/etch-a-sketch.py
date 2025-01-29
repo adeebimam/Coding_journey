@@ -1,3 +1,15 @@
+"""
+
+In this program, we explore the functionality of the Screen class, 
+focusing on its attributes that enhance user interaction. 
+
+Specifically, we utilize the listen() and onkey() methods, 
+which enable dynamic user input by linking key presses to specific actions, 
+fostering a more interactive and engaging interface.
+
+AI 27/01/2025
+"""
+
 # Import necessary modules
 from turtle import Turtle, Screen  # Import Turtle for drawing and Screen for the window
 

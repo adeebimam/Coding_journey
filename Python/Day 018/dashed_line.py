@@ -18,7 +18,7 @@ for i in range(10):
     addi_turtle.forward(10)
     addi_turtle.pendown()
 
-addi_turtle.home()
+
 
 
 screen = Screen()

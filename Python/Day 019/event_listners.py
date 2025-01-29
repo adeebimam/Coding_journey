@@ -1,3 +1,12 @@
+"""
+A simple interactive program that moves a turtle forward when the "space" key is pressed:
+
+Screen Methods: listen() activates key listening, and onkey() binds the key to the movement function.
+Demonstrates basic event handling and user interaction.
+
+AI 27/01/2025
+"""
+
 # Import necessary modules
 from turtle import Turtle, Screen  # Import Turtle for drawing and Screen for the window
 
